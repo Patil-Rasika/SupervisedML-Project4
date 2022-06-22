@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding:2px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 800px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 0px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 0px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h2>Weather Prediction & Insights In Spain</h2>
+</header>
+
+<section>
+  <nav>
+        <h2>Enter Weather Data</h2>
+        <form action="/predictweather" method = "POST">
+          <label for="Tdate">Date(MM/DD/YYYY)</label><br>
+          <input type="text" id="Tdate" name="Tdate" value= "{{ Tdate }}"><br>
+          <label for="temp">Temperature (kelvin)</label><br>
+          <input type="text" id="temp" name="temp" value= "{{ temp }}"><br>
+          <label for="pressure">Pressure (hectopascal)</label><br>
+          <input type="text" id="pressure" name="pressure" value="{{ pressure }}"><br>
+          <label for="humidity">Humidity (%)</label><br>
+          <input type="text" id="humidity" name="humidity" value="{{ humidity }}"><br>
+          <label for="windspeed">Wind Speed (meter/sec)</label><br>
+          <input type="text" id="windspeed" name="windspeed" value="{{ windspeed }}"><br>
+          <label for="winddeg">Wind degree (degree)</label><br>
+          <input type="text" id="winddeg" name="winddeg" value="{{ winddeg }}"><br>
+          <br>
+          <input type="submit" value="Submit">
+        </form>
+        <h4 style = "color:blue">  {{ form_data }}  </h4>
+  </nav>
+  
+  <article>
+    <div class='tableauPlaceholder' id='viz1655786962051' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;We&#47;WeatherForecast1&#47;Weather&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='WeatherForecast1&#47;Weather' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;We&#47;WeatherForecast1&#47;Weather&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1655786962051');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.minHeight='750px';vizElement.style.maxHeight=(divElement.offsetWidth*1.77)+'px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+</article>
+</section>
+
+<footer>
+  <p></p>
+</footer>
+
+</body>
+</html>
